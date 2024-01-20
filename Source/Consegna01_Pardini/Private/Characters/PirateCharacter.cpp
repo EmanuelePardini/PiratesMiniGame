@@ -4,6 +4,7 @@
 #include "Characters/PirateCharacter.h"
 
 #include "Camera/CameraComponent.h"
+#include "Anim/PirateAnim.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
@@ -14,9 +15,10 @@ APirateCharacter::APirateCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	//Movement Settings
-	GetCharacterMovement()->JumpZVelocity = 700.f;
+	GetCharacterMovement()->JumpZVelocity = 400.f;
 	GetCharacterMovement()->MaxWalkSpeed = 250.f;
 
+	//Camera Settings
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>("CameraBoom");
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->bUsePawnControlRotation = true;
@@ -29,6 +31,9 @@ APirateCharacter::APirateCharacter()
 	FirstPersonCamera = CreateDefaultSubobject<UCameraComponent>("FirstPersonCamera");
 	FirstPersonCamera->SetupAttachment(GetMesh());
 	FirstPersonCamera->bUsePawnControlRotation = true;
+
+	//Components Settings
+	InteractorComponent = CreateDefaultSubobject<UInteractorComponent>("InteractorComponent");
 	
 }
 
@@ -54,24 +59,28 @@ void APirateCharacter::Animate()
 
 void APirateCharacter::Move(const FInputActionValue& Value)
 {
+	// Obtains the controller's rotation and create a rotation on the yaw axis
 	FVector2d MovementValue = Value.Get<FVector2d>();
-
 	const FRotator Rotation = Controller->GetControlRotation();
-	const FRotator YawRotation(0,Rotation.Yaw, 0);
+	const FRotator YawRotation(0, Rotation.Yaw, 0);
 
+	// Gets the forward and right directions based on the Yaw rotation
 	const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 	const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
+	// Adds movement input along the forward axis (ForwardDirection) and the right axis (RightDirection)
 	AddMovementInput(ForwardDirection, MovementValue.Y);
 	AddMovementInput(RightDirection, MovementValue.X);
+
 }
 
 void APirateCharacter::Look(const FInputActionValue& Value)
 {
 	FVector2d LookValue = Value.Get<FVector2d>();
-
+	
+	// Adds input to control the rotation
 	AddControllerYawInput(LookValue.X);
-	AddControllerPitchInput(-LookValue.Y);
+	AddControllerPitchInput(-LookValue.Y); //Inverted
 	
 }
 
@@ -88,8 +97,7 @@ void APirateCharacter::EndRun(const FInputActionValue& Value)
 
 void APirateCharacter::Interact(const FInputActionValue& Value)
 {
-	//TODO: Implement Interact
-	GEngine->AddOnScreenDebugMessage(1,8,FColor::Red, TEXT("To Implement Interact"));
+	InteractorComponent->Interact();
 }
 
 void APirateCharacter::Drop(const FInputActionValue& Value)
@@ -100,14 +108,14 @@ void APirateCharacter::Drop(const FInputActionValue& Value)
 
 void APirateCharacter::ChangeVisual(const FInputActionValue& Value)
 {
-	if(FirstPersonActive)
+	if(FirstPersonActive) //Switch to third person camera
 	{
 		ThirdPersonCamera->SetActive(true);
 		FirstPersonCamera->SetActive(false);
 		bUseControllerRotationYaw = false;
 		FirstPersonActive = false;
 	}
-	else
+	else //Switch to first person camera
 	{
 		FirstPersonCamera->SetActive(true);
 		ThirdPersonCamera->SetActive(false);
