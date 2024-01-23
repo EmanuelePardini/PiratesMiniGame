@@ -22,16 +22,21 @@ void AInteractable::BeginPlay()
 void AInteractable::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	InteractionTimer += DeltaTime;
 
+	//If enough stop the timer
 	if(InteractionTimer >= InteractionDelay)
 	{
 		CanActivate = true;
+	}
+	else //increment the timer
+	{
+		InteractionTimer += DeltaTime;
 	}
 }
 
 void AInteractable::Activate()
 {
+	//Reset the timer
 	CanActivate = false;
 	InteractionTimer = 0;
 }

@@ -7,7 +7,7 @@
 #include "InteractorComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( ClassGroup=(Interaction), meta=(BlueprintSpawnableComponent) )
 class CONSEGNA01_PARDINI_API UInteractorComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -18,9 +18,13 @@ public:
 	
 protected:
 	UPROPERTY(EditAnywhere)
-	float InteractionDistance = 250;
+	float InteractionDistance = 100;
 	UPROPERTY(EditAnywhere)
 	FName InteractionMask = "OverlapAllDynamic";
+	UPROPERTY(EditAnywhere)
+	float Radius = 60;
+	
+	//TODO: Set Custom Collision
 	
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -29,5 +33,4 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void Interact();
-		
 };

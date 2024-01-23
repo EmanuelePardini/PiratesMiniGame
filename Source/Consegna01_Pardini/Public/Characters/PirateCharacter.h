@@ -6,8 +6,8 @@
 #include "InputActionValue.h"
 #include "Anim/PirateAnim.h"
 #include "GameFramework/Character.h"
-#include "GameFramework/PlayerStart.h"
 #include "Interaction/InteractorComponent.h"
+#include "Inventory/InventoryComponent.h"
 #include "PirateCharacter.generated.h"
 
 UCLASS()
@@ -18,12 +18,16 @@ class CONSEGNA01_PARDINI_API APirateCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	APirateCharacter();
+	
 	//Component Declaration
 	UPROPERTY(VisibleAnywhere)
 	UInteractorComponent* InteractorComponent;
+	UPROPERTY(VisibleAnywhere)
+	UInventoryComponent* InventoryComponent;
 	
 
 protected:
+	//Camera Declaration
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
 	class USpringArmComponent* CameraBoom;
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
@@ -32,6 +36,8 @@ protected:
 	class UCameraComponent* FirstPersonCamera;
 	UPROPERTY(VisibleAnywhere)
 	bool FirstPersonActive = false;
+
+	//Anim Instances Declaration
 	UPROPERTY(EditAnywhere)
 	UPirateAnim* Animations;
 	
@@ -58,8 +64,5 @@ public:
 
 	//Change Visual Manage
 	void ChangeVisual(const FInputActionValue& Value);
-
-	//Manage Animations
-	void Animate();
 
 };

@@ -15,7 +15,7 @@ APirateCharacter::APirateCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	//Movement Settings
-	GetCharacterMovement()->JumpZVelocity = 400.f;
+	GetCharacterMovement()->JumpZVelocity = 500.f;
 	GetCharacterMovement()->MaxWalkSpeed = 250.f;
 
 	//Camera Settings
@@ -26,7 +26,7 @@ APirateCharacter::APirateCharacter()
 	ThirdPersonCamera = CreateDefaultSubobject<UCameraComponent>("ThirdPersonCamera");
 	ThirdPersonCamera->SetupAttachment(CameraBoom);
 	ThirdPersonCamera->SetActive(true);
-	ThirdPersonCamera->bUsePawnControlRotation = true;
+	ThirdPersonCamera->bUsePawnControlRotation = false;
 
 	FirstPersonCamera = CreateDefaultSubobject<UCameraComponent>("FirstPersonCamera");
 	FirstPersonCamera->SetupAttachment(GetMesh());
@@ -34,13 +34,14 @@ APirateCharacter::APirateCharacter()
 
 	//Components Settings
 	InteractorComponent = CreateDefaultSubobject<UInteractorComponent>("InteractorComponent");
-	
+	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>("InventoryComponent");
 }
 
 // Called when the game starts or when spawned
 void APirateCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	
 	Animations = Cast<UPirateAnim>(GetMesh()->GetAnimInstance());
 }
 
@@ -48,13 +49,11 @@ void APirateCharacter::BeginPlay()
 void APirateCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	Animate();
-}
-
-void APirateCharacter::Animate()
-{
-	//Animations->SpeedX = GetCharacterMovement()->Velocity.X;
-	//Animations->SpeedY = GetCharacterMovement()->Velocity.Y;
+	
+	if(Animations)
+	{
+		Animations->Animate(this);
+	}
 }
 
 void APirateCharacter::Move(const FInputActionValue& Value)
@@ -80,7 +79,7 @@ void APirateCharacter::Look(const FInputActionValue& Value)
 	
 	// Adds input to control the rotation
 	AddControllerYawInput(LookValue.X);
-	AddControllerPitchInput(-LookValue.Y); //Inverted
+	AddControllerPitchInput(LookValue.Y);
 	
 }
 
@@ -97,13 +96,13 @@ void APirateCharacter::EndRun(const FInputActionValue& Value)
 
 void APirateCharacter::Interact(const FInputActionValue& Value)
 {
+	//The interaction system contains Item management too
 	InteractorComponent->Interact();
 }
 
 void APirateCharacter::Drop(const FInputActionValue& Value)
 {
-	//TODO: Implement Drop
-	GEngine->AddOnScreenDebugMessage(1,8,FColor::Red, TEXT("To Implement Drop"));
+	InventoryComponent->DropItem();
 }
 
 void APirateCharacter::ChangeVisual(const FInputActionValue& Value)

@@ -2,7 +2,7 @@
 
 
 #include "Interaction/InteractorComponent.h"
-
+#include "Inventory/Item.h"
 #include "Interaction/Interactable.h"
 
 // Sets default values for this component's properties
@@ -41,11 +41,14 @@ void UInteractorComponent::Interact()
 	AActor* Owner = GetOwner();
 	FVector Start = Owner->GetActorLocation();
 	FVector End = Start + Owner->GetActorForwardVector() * InteractionDistance;
+	FQuat Rot = FQuat::Identity;
+	FCollisionShape Shape = FCollisionShape::MakeSphere(Radius);
 	TArray<FHitResult> Hits;
-
-	//Interaction LineTrace
-	//DrawDebugLine(Context, Start, End, FColor::Green, false);
-	Context->LineTraceMultiByProfile(Hits, Start, End, InteractionMask);
+	
+	// DrawDebugSphere(Context, Start, Radius, 16, FColor::Blue);
+	// DrawDebugSphere(Context, End, Radius, 16, FColor::Blue);
+	
+	Context->SweepMultiByProfile(Hits, Start, End, Rot, InteractionMask, Shape);
 
 	//For all interaction activate the interactables
 	for(FHitResult Hit : Hits)
@@ -55,7 +58,17 @@ void UInteractorComponent::Interact()
 		
 		if(Interactable && Interactable->NeedInput)
 		{
-			Interactable->Activate();
+			AItem* Item = Cast<AItem>(Interactable);
+			//TODO: Find a better way to add Item
+			if(Item) //If the interactable is an Item give the Owner
+			{
+				Item->Activate(Owner);
+			}
+			else //Else don't needed
+			{
+				Interactable->Activate();
+			}
+			
 		}
 	}
 }
