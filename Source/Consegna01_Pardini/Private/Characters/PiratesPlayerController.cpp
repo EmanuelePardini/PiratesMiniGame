@@ -217,7 +217,7 @@ void APiratesPlayerController::ChangeCharacter(const FInputActionValue& Value)
 	if(CanChange) //Don't need Character check in case the actual character died
 	{
 		APirateCharacter* ActualPirate = PirateCharacters[PirateIndex];
-		
+		//TODO: Fix Null Pirate
 		//If it isn't the last character of the roster go to the next
 		if(PirateIndex < PirateCharacters.Num()-1)
 		{

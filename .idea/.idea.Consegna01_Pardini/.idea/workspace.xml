@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3d984b22-9353-4b33-8ee7-861b7654e66f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Consegna01_Pardini/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Consegna01_Pardini/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/LPSDeluxe2TropicalEnvironment/ExampleMaps/DemoMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/LPSDeluxe2TropicalEnvironment/ExampleMaps/DemoMap.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Consegna01_Pardini/Private/Characters/PiratesPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Consegna01_Pardini/Private/Characters/PiratesPlayerController.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +126,7 @@
       <workItem from="1706090159737" duration="2610000" />
       <workItem from="1706101096943" duration="112000" />
       <workItem from="1706101263357" duration="17000" />
-      <workItem from="1706101718495" duration="321000" />
+      <workItem from="1706101718495" duration="3616000" />
     </task>
     <servers />
   </component>
