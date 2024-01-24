@@ -13,7 +13,7 @@
 UCLASS()
 class CONSEGNA01_PARDINI_API AInteractableSwitch : public AInteractable
 {
-	//A Type of Interactable that can have 2 location and rotation states
+	//I intended the switch as a Type of Interactable that can have 2 location and rotation states
 	GENERATED_BODY()
 	
 public:
