@@ -211,13 +211,13 @@ void APiratesPlayerController::ChangeVisual(const FInputActionValue& Value)
 //Change Character is a duty of the controller so implemented here
 void APiratesPlayerController::ChangeCharacter(const FInputActionValue& Value)
 {
-	//If the actual Character is falling can't change
-	APirateCharacter* ActualPirate = PirateCharacters[PirateIndex];
-	bool IsFalling = ActualPirate->GetCharacterMovement()->IsFalling();
 	
 	
-	if(CanChange && !IsFalling) //Don't need Character check in case the actual character died
+	
+	if(CanChange) //Don't need Character check in case the actual character died
 	{
+		APirateCharacter* ActualPirate = PirateCharacters[PirateIndex];
+		
 		//If it isn't the last character of the roster go to the next
 		if(PirateIndex < PirateCharacters.Num()-1)
 		{
