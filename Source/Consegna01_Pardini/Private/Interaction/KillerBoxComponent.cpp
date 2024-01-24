@@ -30,8 +30,8 @@ void UKillerBoxComponent::Kill(ACharacter* Character)
 	APiratesPlayerController* Controller = Cast<APiratesPlayerController>(Character->GetController());
 	if(Controller)
 	{
-		Controller->ChangeCharacter(true);
 		Character->Destroy();
+		Controller->ChangeCharacter(true);
 	}
 }
 

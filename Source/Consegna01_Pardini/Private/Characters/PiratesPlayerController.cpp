@@ -216,7 +216,7 @@ void APiratesPlayerController::ChangeCharacter(const FInputActionValue& Value)
 	bool IsFalling = ActualPirate->GetCharacterMovement()->IsFalling();
 	
 	
-	if(CanChange && !IsFalling) //Don't need Character check in case the actual character died
+	if((CanChange && !IsFalling) || ActualPirate == nullptr) //Don't need Character check in case the actual character died
 	{
 		//If it isn't the last character of the roster go to the next
 		if(PirateIndex < PirateCharacters.Num()-1)
