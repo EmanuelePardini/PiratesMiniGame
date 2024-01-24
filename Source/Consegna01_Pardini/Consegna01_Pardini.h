@@ -4,10 +4,9 @@
 
 #include "CoreMinimal.h"
 
-//TODO:1 -Creare il minigioco
-//TODO:1 -Creare un HUD
-//TODO:1 -CodeMap e presentazione
+//TODO:1 -Creare il minigioco(Add Key, Door, Chest) 2h
+//TODO:1 -Creare un HUD 2h
+//TODO:1 -CodeMap e presentazione 30 min
 
-//TODO:2 -Change No Input Interactables?
-//TODO:2 -Refactor Code
+//TODO:2 -Refactor Code 30 min
 

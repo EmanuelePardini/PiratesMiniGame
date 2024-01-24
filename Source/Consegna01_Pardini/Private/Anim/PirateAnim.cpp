@@ -8,7 +8,8 @@
 
 void UPirateAnim::Animate(ACharacter* Character)
 {
-		//TODO: Risolvere i bug delle anim al cambiamento del personaggio
+	if(ToAnimate)
+	{
 		//Get absolute values of Velocity
 		FVector Velocity = Character->GetCharacterMovement()->Velocity.GetAbs();
 	
@@ -16,6 +17,8 @@ void UPirateAnim::Animate(ACharacter* Character)
 		Grounded = !Character->GetCharacterMovement()->IsFalling();
 		SpeedX = Velocity.X;
 		SpeedY = Velocity.Y;
-
+	}
 
 }
+
+

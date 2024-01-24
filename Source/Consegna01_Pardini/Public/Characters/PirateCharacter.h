@@ -5,7 +5,9 @@
 #include "CoreMinimal.h"
 #include "InputActionValue.h"
 #include "Anim/PirateAnim.h"
+#include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Interaction/InteractorComponent.h"
 #include "Inventory/InventoryComponent.h"
 #include "PirateCharacter.generated.h"
@@ -24,22 +26,21 @@ public:
 	UInteractorComponent* InteractorComponent;
 	UPROPERTY(VisibleAnywhere)
 	UInventoryComponent* InventoryComponent;
-	
-
-protected:
-	//Camera Declaration
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
-	class USpringArmComponent* CameraBoom;
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
-	class UCameraComponent* ThirdPersonCamera;
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
-	class UCameraComponent* FirstPersonCamera;
-	UPROPERTY(VisibleAnywhere)
-	bool FirstPersonActive = false;
 
 	//Anim Instances Declaration
 	UPROPERTY(EditAnywhere)
 	UPirateAnim* Animations;
+
+protected:
+	//Camera Declaration
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	USpringArmComponent* CameraBoom;
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	UCameraComponent* ThirdPersonCamera;
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	UCameraComponent* FirstPersonCamera;
+	UPROPERTY(VisibleAnywhere)
+	bool FirstPersonActive = false;
 	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -61,6 +62,7 @@ public:
 
 	//Drop Items Manage
 	void Drop(const FInputActionValue& Value);
+	void DropHalf(const FInputActionValue& Value);
 
 	//Change Visual Manage
 	void ChangeVisual(const FInputActionValue& Value);

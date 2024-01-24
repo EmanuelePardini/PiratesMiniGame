@@ -24,6 +24,8 @@ protected:
 	TMap<TSubclassOf<UInventoryItem>, UInventorySlot*> InventoryMap;
 	UPROPERTY(EditAnywhere)
 	TArray<UInventorySlot*> InventoryArray;
+	UPROPERTY(EditAnywhere)
+	int InventoryLength = 5;
 	
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -32,7 +34,12 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	UFUNCTION(BlueprintCallable)
-	void AddItem(AItem* Item);
+	bool AddItem(AItem* Item);
 	UFUNCTION(BlueprintCallable)
-	bool DropItem();
+	bool MoveItem(UInventorySlot* Slot);
+	UFUNCTION(BlueprintCallable)
+	bool MoveAll(UInventoryComponent* NewInventory);
+	UFUNCTION(BlueprintCallable)
+	bool DropItem(bool RemoveHalf = false);
+
 };

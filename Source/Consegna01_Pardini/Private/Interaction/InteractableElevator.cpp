@@ -25,9 +25,9 @@ void AInteractableElevator::Tick(float DeltaTime)
 	}
 }
 
-void AInteractableElevator::Activate()
+void AInteractableElevator::Activate(ACharacter* Interactor)
 {
-	Super::Activate();
+	Super::Activate(Interactor);
 	CanMove = true;
 }
 

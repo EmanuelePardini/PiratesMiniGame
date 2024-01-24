@@ -2,16 +2,14 @@
 
 
 #include "Inventory/Item.h"
+#include "GameFramework/Character.h"
 #include "Inventory/InventoryComponent.h"
 
-void AItem::Activate(AActor* Actor)
+
+
+void AItem::Activate(ACharacter* Interactor)
 {
-	//Add Item to the Inventory
-	UInventoryComponent* Inventory = Actor->GetComponentByClass<UInventoryComponent>();
+	Super::Activate(Interactor);
+	UInventoryComponent* Inventory = Interactor->GetComponentByClass<UInventoryComponent>();
 	Inventory->AddItem(this);
-
-	//Destroy InScene Actor
-	Destroy();
-
-	Super::Activate();
 }

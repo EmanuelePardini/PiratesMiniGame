@@ -2,7 +2,7 @@
 
 
 #include "Interaction/InteractorComponent.h"
-#include "Inventory/Item.h"
+#include "GameFramework/Character.h"
 #include "Interaction/Interactable.h"
 
 // Sets default values for this component's properties
@@ -38,7 +38,7 @@ void UInteractorComponent::Interact()
 {
 	//Variables Declaration
 	UWorld* Context = GetWorld();
-	AActor* Owner = GetOwner();
+	ACharacter* Owner = Cast<ACharacter>(GetOwner());
 	FVector Start = Owner->GetActorLocation();
 	FVector End = Start + Owner->GetActorForwardVector() * InteractionDistance;
 	FQuat Rot = FQuat::Identity;
@@ -58,18 +58,9 @@ void UInteractorComponent::Interact()
 		
 		if(Interactable && Interactable->NeedInput)
 		{
-			AItem* Item = Cast<AItem>(Interactable);
-			//TODO: Find a better way to add Item
-			if(Item) //If the interactable is an Item give the Owner
-			{
-				Item->Activate(Owner);
-			}
-			else //Else don't needed
-			{
-				Interactable->Activate();
-			}
-			
+			Interactable->Activate(Owner);
 		}
 	}
 }
+
 

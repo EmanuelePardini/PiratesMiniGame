@@ -102,7 +102,12 @@ void APirateCharacter::Interact(const FInputActionValue& Value)
 
 void APirateCharacter::Drop(const FInputActionValue& Value)
 {
-	InventoryComponent->DropItem();
+	InventoryComponent->DropItem(false);
+}
+
+void APirateCharacter::DropHalf(const FInputActionValue& Value)
+{
+	InventoryComponent->DropItem(true);
 }
 
 void APirateCharacter::ChangeVisual(const FInputActionValue& Value)

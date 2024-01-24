@@ -20,12 +20,8 @@ AInteractableJumper::AInteractableJumper()
 void AInteractableJumper::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
                                             UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	Interactor = Cast<ACharacter>(OtherActor);
-	if(Interactor)
-	{
-		Activate();
-	}
-	
+	Character = Cast<ACharacter>(OtherActor);
+	Activate(Character);
 }
 
 void AInteractableJumper::OnEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
@@ -34,20 +30,19 @@ void AInteractableJumper::OnEndOverlap(UPrimitiveComponent* OverlappedComp, AAct
 	Deactivate();
 }
 
-void AInteractableJumper::Activate()
+void AInteractableJumper::Activate(ACharacter* Interactor)
 {
-	Super::Activate();
-		//Save the JumpZVelocity to reset on Deactivate
-		InitialJumpSpeed = Interactor->GetCharacterMovement()->JumpZVelocity;
-		//Change the JumpZVelocity
-		Interactor->GetCharacterMovement()->JumpZVelocity = JumpSpeed;
-
+	Super::Activate(Interactor);
 	
+	//Save the JumpZVelocity to reset on Deactivate
+	InitialJumpSpeed = Interactor->GetCharacterMovement()->JumpZVelocity;
+	//Change the JumpZVelocity
+	Interactor->GetCharacterMovement()->JumpZVelocity = JumpSpeed;
 }
 
 void AInteractableJumper::Deactivate()
 {
 	Super::Deactivate();
 	//Reset the JumpZVelocity
-	Interactor->GetCharacterMovement()->JumpZVelocity = InitialJumpSpeed;
+	Character->GetCharacterMovement()->JumpZVelocity = InitialJumpSpeed;
 }

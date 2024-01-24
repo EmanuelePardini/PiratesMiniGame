@@ -14,7 +14,7 @@ UCLASS(Blueprintable, BlueprintType)
 class CONSEGNA01_PARDINI_API UInventoryItem : public UObject
 {
 	GENERATED_BODY()
-
+	
 protected:
 	UPROPERTY(EditAnywhere)
 	FString ItemName;

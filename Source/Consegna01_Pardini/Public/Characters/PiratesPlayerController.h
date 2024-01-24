@@ -36,29 +36,39 @@ protected:
 	UPROPERTY(EditAnywhere)
 	FCharacterData SelectedCharacter;
 
-	//To Manage Character and Visual Changes and avoid Spam
+	//To Manage Actions Timer and avoid Spam
 	UPROPERTY(EditAnywhere)
 	bool CanChange;
 	UPROPERTY(EditAnywhere)
 	float ChangeTimer = 0;
 	UPROPERTY(EditAnywhere)
 	float ChangeDelay = 0.5;
+	UPROPERTY(EditAnywhere)
+	bool CanInteract;
+	UPROPERTY(EditAnywhere)
+	float InteractTimer = 0;
+	UPROPERTY(EditAnywhere)
+	float InteractDelay = 0.5;
 
 private:
 	virtual void BeginPlay() override;
 
 public:
 	virtual void Tick(float DeltaSeconds) override;
-
 	virtual void SetupInputComponent() override;
 	
 	//Spawn Player
 	void SpawnPlayer();
 	APlayerStart* FindPlayerStart(FCharacterData CharacterData);
+
+	//For Timers Management
+	void ManageTimers(float DeltaSeconds);
 	
 	//Primary Actions
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+
+	//Jump Manage
 	void Jump(const FInputActionValue& Value);
 
 	//Run Manage
@@ -70,6 +80,7 @@ public:
 
 	//Drop Items Manage
 	void Drop(const FInputActionValue& Value);
+	void DropHalf(const FInputActionValue& Value);
 
 	//Change Visual Manage
 	void ChangeVisual(const FInputActionValue& Value);

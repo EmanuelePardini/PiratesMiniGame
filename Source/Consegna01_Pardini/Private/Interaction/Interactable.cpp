@@ -3,47 +3,14 @@
 
 #include "Interaction/Interactable.h"
 
-// Sets default values
-AInteractable::AInteractable()
+void AInteractable::Activate(ACharacter* Interactor)
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
-}
-
-// Called when the game starts or when spawned
-void AInteractable::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AInteractable::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-	//If enough stop the timer
-	if(InteractionTimer >= InteractionDelay)
-	{
-		CanActivate = true;
-	}
-	else //increment the timer
-	{
-		InteractionTimer += DeltaTime;
-	}
-}
-
-void AInteractable::Activate()
-{
-	//Reset the timer
-	CanActivate = false;
-	InteractionTimer = 0;
 }
 
 void AInteractable::Deactivate()
 {
 }
+
 
 
 

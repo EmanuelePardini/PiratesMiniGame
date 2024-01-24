@@ -26,5 +26,5 @@ public:
 	FVector SwitchLocation = FVector(0,0,0);
 
 protected:
-	virtual void Activate() override;
+	virtual void Activate(ACharacter* Interactor = nullptr) override;
 };

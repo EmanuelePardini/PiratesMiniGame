@@ -35,7 +35,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	virtual void Activate() override;
+	virtual void Activate(ACharacter* Interactor = nullptr) override;
 	virtual void Deactivate() override;
 	UFUNCTION()
 	void Move();

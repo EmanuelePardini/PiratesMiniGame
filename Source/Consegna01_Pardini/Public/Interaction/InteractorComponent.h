@@ -20,11 +20,10 @@ protected:
 	UPROPERTY(EditAnywhere)
 	float InteractionDistance = 100;
 	UPROPERTY(EditAnywhere)
-	FName InteractionMask = "OverlapAllDynamic";
+	FName InteractionMask = "OverlapAllDynamic"; //By Default, Actually overwritten with Custom "Interaction"
 	UPROPERTY(EditAnywhere)
 	float Radius = 60;
 	
-	//TODO: Set Custom Collision
 	
 	// Called when the game starts
 	virtual void BeginPlay() override;

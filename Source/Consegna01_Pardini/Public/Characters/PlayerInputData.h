@@ -30,6 +30,8 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	UInputAction* Drop;
 	UPROPERTY(EditDefaultsOnly)
+	UInputAction* DropHalf;
+	UPROPERTY(EditDefaultsOnly)
 	UInputAction* ChangeCharacter;
 	UPROPERTY(EditDefaultsOnly)
 	UInputAction* ChangeVisual;
