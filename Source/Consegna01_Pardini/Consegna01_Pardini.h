@@ -4,9 +4,7 @@
 
 #include "CoreMinimal.h"
 
-//TODO:1 -Creare il minigioco(Add Key, Door, Chest) 2h
-//TODO:1 -Creare un HUD 2h
-//TODO:1 -CodeMap e presentazione 30 min
-
-//TODO:2 -Refactor Code 30 min
+//TODO:1 -Creare un HUD, che presenti solo i tasti e i task
+//TODO:1 -Aggiungere door e key
+//TODO:1 -CodeMap
 

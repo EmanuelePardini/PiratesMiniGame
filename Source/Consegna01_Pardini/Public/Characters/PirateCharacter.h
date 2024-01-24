@@ -22,24 +22,24 @@ public:
 	APirateCharacter();
 	
 	//Component Declaration
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components")
 	UInteractorComponent* InteractorComponent;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components")
 	UInventoryComponent* InventoryComponent;
 
 	//Anim Instances Declaration
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Animations")
 	UPirateAnim* Animations;
 
 protected:
 	//Camera Declaration
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category="Camera")
 	USpringArmComponent* CameraBoom;
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category="Camera")
 	UCameraComponent* ThirdPersonCamera;
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category="Camera")
 	UCameraComponent* FirstPersonCamera;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, Category="Camera")
 	bool FirstPersonActive = false;
 	
 	// Called when the game starts or when spawned

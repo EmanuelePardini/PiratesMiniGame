@@ -15,6 +15,6 @@ class CONSEGNA01_PARDINI_API UCharacterRoster : public UDataAsset
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category="Setup")
 	TArray<FCharacterData> Characters;
 };

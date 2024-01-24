@@ -18,15 +18,15 @@ public:
 	AInteractableElevator();
 
 protected:
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool CanMove = false;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FVector StartLocation;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FVector CurrentLocation;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	FVector MoveSpeed = FVector(0,0,0);
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	float Distance = 0;
 	
 	// Called when the game starts or when spawned
@@ -37,6 +37,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void Activate(ACharacter* Interactor = nullptr) override;
 	virtual void Deactivate() override;
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void Move();
 };

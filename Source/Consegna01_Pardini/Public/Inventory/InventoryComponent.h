@@ -20,11 +20,11 @@ public:
 	UInventoryComponent();
 	
 protected:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	TMap<TSubclassOf<UInventoryItem>, UInventorySlot*> InventoryMap;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	TArray<UInventorySlot*> InventoryArray;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	int InventoryLength = 5;
 	
 	// Called when the game starts

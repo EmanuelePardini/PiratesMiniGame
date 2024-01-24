@@ -16,15 +16,14 @@ class CONSEGNA01_PARDINI_API AItem : public AInteractable
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	uint8 Quantity = 1;
 	
 protected:
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Setup")
 	TSubclassOf<UInventoryItem> ItemData = UInventoryItem::StaticClass();
 
 public:
 	FORCEINLINE TSubclassOf<UInventoryItem> GetItemData() const {return ItemData;}
-	
 	virtual void Activate(ACharacter* Interactor) override;
 };

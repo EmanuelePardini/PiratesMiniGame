@@ -18,14 +18,15 @@ public:
 	AInteractableChest();
 
 protected:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UInventoryComponent* InventoryComponent;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	TArray<AItem*> ContainedItems;
 
 	virtual void BeginPlay() override;
 
 public:
+	UFUNCTION(BlueprintCallable)
 	void FillChest();
 	virtual void Activate(ACharacter* Interactor) override;	
 };

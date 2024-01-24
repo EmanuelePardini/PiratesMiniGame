@@ -13,11 +13,13 @@ class CONSEGNA01_PARDINI_API AInteractable : public AActor
 	
 public:
 	//To check if need the input of the player to start interaction
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	bool NeedInput = true; //Needs Input by default
 	
 	// Called every frame
+	UFUNCTION(BlueprintCallable)
 	virtual void Activate(ACharacter* Interactor = nullptr);
+	UFUNCTION(BlueprintCallable)
 	virtual void Deactivate();
 
 };

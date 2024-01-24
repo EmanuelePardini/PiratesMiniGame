@@ -16,11 +16,11 @@ class CONSEGNA01_PARDINI_API UInventoryItem : public UObject
 	GENERATED_BODY()
 	
 protected:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category="Setup")
 	FString ItemName;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category="Setup")
 	FString ItemType;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category="Setup")
 	TSubclassOf<AInteractable> ItemToSpawn;
 
 public:

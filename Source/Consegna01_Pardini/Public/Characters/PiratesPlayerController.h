@@ -19,35 +19,35 @@ class CONSEGNA01_PARDINI_API APiratesPlayerController : public APlayerController
 
 protected:
 	//For Inputs
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	class UPlayerInputData* InputData;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	class UInputMappingContext* CharacterMappingContext;
 	
 	//For Pirate Control
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Characters")
 	TArray<APirateCharacter*> PirateCharacters;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Characters")
 	uint8 PirateIndex;
 	
 	//CharacterRoster Management
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	UCharacterRoster* CharacterRoster;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	FCharacterData SelectedCharacter;
 
 	//To Manage Actions Timer and avoid Spam
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Timer")
 	bool CanChange;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Timer")
 	float ChangeTimer = 0;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Timer")
 	float ChangeDelay = 0.5;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Timer")
 	bool CanInteract;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Timer")
 	float InteractTimer = 0;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Timer")
 	float InteractDelay = 0.5;
 
 private:

@@ -17,11 +17,11 @@ public:
 	UInteractorComponent();
 	
 protected:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	float InteractionDistance = 100;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	FName InteractionMask = "OverlapAllDynamic"; //By Default, Actually overwritten with Custom "Interaction"
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	float Radius = 60;
 	
 	

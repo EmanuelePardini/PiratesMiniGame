@@ -10,10 +10,10 @@ struct FCharacterData
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category="Setup")
 	FString PirateName;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category="Setup")
 	FName PlayerStartTag;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category="Setup")
 	TSubclassOf<APirateCharacter> Pirate;
 };

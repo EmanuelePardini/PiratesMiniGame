@@ -16,13 +16,13 @@ class CONSEGNA01_PARDINI_API AInteractableSwitch : public AInteractable
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(EditAnywhere, Category="Setup")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	bool SwitchOn = false;
-	UPROPERTY(EditAnywhere, Category="Setup")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	TArray<AInteractable*> LinkedInteractables;
-	UPROPERTY(EditAnywhere, Category="Setup")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	FRotator SwitchRotation = FRotator(0,0,0);
-	UPROPERTY(EditAnywhere, Category="Setup")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	FVector SwitchLocation = FVector(0,0,0);
 
 protected:
