@@ -5,6 +5,5 @@
 #include "CoreMinimal.h"
 
 //TODO:1 -Creare un HUD, che presenti solo i tasti e i task
-//TODO:1 -Aggiungere door e key
 //TODO:1 -CodeMap
 

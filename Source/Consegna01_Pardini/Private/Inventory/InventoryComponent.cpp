@@ -52,6 +52,30 @@ bool UInventoryComponent::AddItem(AItem* Item)
 	return true;
 }
 
+bool UInventoryComponent::UseItem(TSubclassOf<UInventoryItem> ItemData, int Quantity)
+{
+	//If the inventory has the item required
+	bool Contained = InventoryMap.Contains(ItemData);
+	if (!Contained) return false;
+	
+	//If you have enough item of the type specified
+	bool IsEnough = InventoryMap[ItemData]->Quantity >= Quantity ? true : false;
+	if (!IsEnough) return false;
+	
+	//then subtract it to your inventory
+	InventoryMap[ItemData]->Quantity -= Quantity;
+		
+	if(InventoryMap[ItemData]->Quantity <= 0) //if the remaining quantity is 0 remove the slot
+	{
+		UInventorySlot* Slot = InventoryMap.FindRef(ItemData);
+		InventoryMap.Remove(ItemData);
+		InventoryArray.Remove(Slot);
+	}
+	return true;
+}
+	
+
+
 bool UInventoryComponent::MoveItem(UInventorySlot* Slot)
 {
 	bool Contained = InventoryMap.Contains(Slot->GetItemType());

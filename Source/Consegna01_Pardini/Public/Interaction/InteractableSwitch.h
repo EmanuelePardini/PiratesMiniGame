@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Interactable.h"
+#include "Inventory/InventoryItem.h"
 #include "InteractableSwitch.generated.h"
 
 /**
@@ -16,8 +17,16 @@ class CONSEGNA01_PARDINI_API AInteractableSwitch : public AInteractable
 	GENERATED_BODY()
 	
 public:
+	AInteractableSwitch();
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	bool SwitchOn = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
+	bool Unlocked = true;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
+	int Cost = 0;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
+	TSubclassOf<UInventoryItem> ItemType = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	TArray<AInteractable*> LinkedInteractables;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")

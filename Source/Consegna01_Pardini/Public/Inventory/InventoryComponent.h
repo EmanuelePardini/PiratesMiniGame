@@ -36,6 +36,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool AddItem(AItem* Item);
 	UFUNCTION(BlueprintCallable)
+	bool UseItem(TSubclassOf<UInventoryItem> ItemData, int Quantity=1);
+	UFUNCTION(BlueprintCallable)
 	bool MoveItem(UInventorySlot* Slot);
 	UFUNCTION(BlueprintCallable)
 	bool MoveAll(UInventoryComponent* NewInventory);
